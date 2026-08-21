@@ -1,6 +1,6 @@
 {
   disko.devices.disk.main = {
-    device = "/dev/sda";
+    device = nixpkgs.lib.fileContents ./main_disk_device;
     type = "disk";
     content = {
       type = "gpt";
