@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
   disko.devices.disk.main = {
-    device = nixpkgs.lib.fileContents ./main_disk_device;
+    device = lib.fileContents ./main_disk_device;
     type = "disk";
     content = {
       type = "gpt";
