@@ -1,2 +1,4 @@
 hostname
 main_disk_device
+configuration.init.nix
+hardware-configuration.nix
