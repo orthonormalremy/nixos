@@ -19,3 +19,7 @@ echo "nixos-vm" > /mnt/etc/nixos/hostname
 
 nixos-install --no-root-password --flake "path:/mnt/etc/nixos#$(cat /mnt/etc/nixos/hostname)"
 nixos-enter --root /mnt -c 'passwd rdahlke'
+
+echo "rebooting (^c to bail within 3s):"
+sleep 3
+reboot
