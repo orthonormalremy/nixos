@@ -43,6 +43,7 @@
   environment.systemPackages = [
     pkgs.git
     pkgs.gnupg
+    pkgs.google-chrome
     pkgs.python3
     pkgs.vim
   ];
