@@ -51,6 +51,7 @@
   services.displayManager.cosmic-greeter.enable = true;
 
   services.spice-vdagentd.enable = true;
+  services.spice-webdavd.enable = true;
   services.qemuGuest.enable = true;
 
   # `system.stateVersion` come from configuration.init.nix
