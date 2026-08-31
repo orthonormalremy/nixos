@@ -15,5 +15,7 @@ cmp --silent ./main_disk_device <(./scripts/main_disk_device.sh) || exit 1 # par
 cp ./main_disk_device /mnt/etc/nixos/main_disk_device
 cp /mnt/etc/nixos.init/configuration.nix /mnt/etc/nixos/configuration.init.nix
 cp /mnt/etc/nixos.init/hardware-configuration.nix /mnt/etc/nixos/hardware-configuration.nix
-
 echo "nixos-vm" > /mnt/etc/nixos/hostname
+
+nixos-install --no-root-password --flake "path:/mnt/etc/nixos#$(cat /mnt/etc/nixos/hostname)"
+nixos-enter --root /mnt -c 'passwd rdahlke'
