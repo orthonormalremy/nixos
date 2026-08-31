@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   disko.devices.disk.main = {
     device = lib.fileContents ./main_disk_device;
     type = "disk";
