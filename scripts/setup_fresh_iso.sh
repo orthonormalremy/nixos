@@ -17,6 +17,7 @@ cp /mnt/etc/nixos.init/configuration.nix /mnt/etc/nixos/configuration.init.nix
 cp /mnt/etc/nixos.init/hardware-configuration.nix /mnt/etc/nixos/hardware-configuration.nix
 echo "nixos-vm" > /mnt/etc/nixos/hostname
 
+nix --experimental-features "nix-command flakes" flake lock "path:/mnt/etc/nixos"
 nixos-install --no-root-password --flake "path:/mnt/etc/nixos#$(cat /mnt/etc/nixos/hostname)"
 nixos-enter --root /mnt -c 'passwd rdahlke'
 
