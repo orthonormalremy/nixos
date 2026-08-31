@@ -6,11 +6,14 @@ set -Cexuo pipefail
 
 ./scripts/disko_clobber_machine.sh
 
-nixos-generate-config --no-filesystems --root /mnt
+nixos-generate-config --flake --no-filesystems --root /mnt
 mv --update=none-fail /mnt/etc/nixos /mnt/etc/nixos.init
 
 git -C /mnt/etc clone https://github.com/orthonormalremy/nixos.git
+
+cmp --silent ./main_disk_device <(./scripts/main_disk_device.sh) || exit 1 # paranoid sanity check
+cp ./main_disk_device /mnt/etc/nixos/main_disk_device
 cp /mnt/etc/nixos.init/configuration.nix /mnt/etc/nixos/configuration.init.nix
+cp /mnt/etc/nixos.init/hardware-configuration.nix /mnt/etc/nixos/hardware-configuration.nix
+
 echo "nixos-vm" > /mnt/etc/nixos/hostname
-./scripts/main_disk_device.sh > /mnt/etc/nixos/main_disk_device
-cmp --silent ./main_disk_device /mnt/etc/nixos/main_disk_device || exit 1
