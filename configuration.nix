@@ -47,5 +47,11 @@
     pkgs.vim
   ];
 
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+
+  services.spice-vdagentd.enable = true;
+  services.qemuGuest.enable = true;
+
   # `system.stateVersion` come from configuration.init.nix
 }
