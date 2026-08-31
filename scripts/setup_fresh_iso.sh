@@ -7,7 +7,7 @@ set -Cexuo pipefail
 ./scripts/disko_clobber_machine.sh
 
 nixos-generate-config --no-filesystems --root /mnt
-mv --recursive --update=none-fail /mnt/etc/nixos /mnt/etc/nixos.init
+mv --update=none-fail /mnt/etc/nixos /mnt/etc/nixos.init
 
 git -C /mnt/etc clone https://github.com/orthonormalremy/nixos.git
 cp /mnt/etc/nixos.init/configuration.nix /mnt/etc/nixos/configuration.init.nix
